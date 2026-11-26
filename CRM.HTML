@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QORI Beauty | Sistema Integrado ERP & CRM</title>
+  <style>
+    :root {
+      --bg-dark: #0B090A;
+      --bg-panel: #141012;
+      --bg-card: #1C1518;
+      --crimson: #8B0023;
+      --crimson-bright: #B81D43;
+      --gold: #D4AF37;
+      --gold-soft: #F3E5AB;
+      --text-main: #FAF6F0;
+      --text-muted: #C9B8BC;
+      --border: rgba(212, 175, 55, 0.22);
+      --success: #2ECC71;
+      --warning: #F39C12;
+      --danger: #E74C3C;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--crimson), #590219);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--gold);
+    }
+
+    .brand h1 {
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+    }
+
+    .brand h1 span {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* NAVEGACIÓN DE MÓDULOS */
+    .tabs {
+      display: flex;
+      gap: 0.6rem;
+      background: var(--bg-dark);
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.25s;
+    }
+
+    .tab-btn.active {
+      background: var(--crimson);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(139, 0, 35, 0.5);
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+    }
+
+    /* KPI SUPERIORES */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.3rem;
+    }
+
+    .kpi-card span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .kpi-card h2 {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-top: 0.4rem;
+    }
+
+    .kpi-card small {
+      font-size: 0.78rem;
+      color: var(--success);
+    }
+
+    /* SECCIONES / PESTAÑAS */
+    .panel-section {
+      display: none;
+    }
+
+    .panel-section.active {
+      display: block;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      color: var(--gold-soft);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* FORMULARIOS */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.65rem 0.8rem;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 0.75rem;
+      background: linear-gradient(135deg, var(--crimson), var(--crimson-bright));
+      border: 1px solid var(--gold);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    /* KANBAN CRM */
+    .kanban-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .kanban-board {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .kanban-col {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 360px;
+    }
+
+    .kanban-col h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--gold);
+    }
+
+    .lead-card {
+      background: var(--bg-panel);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 3px solid var(--crimson-bright);
+      border-radius: 8px;
+      padding: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .lead-card strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .lead-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .tag-subtone {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--gold-soft);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .lead-actions {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .btn-mini {
+      flex: 1;
+      padding: 0.4rem;
+      font-size: 0.78rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg-dark);
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .btn-mini.win {
+      background: rgba(46, 204, 113, 0.15);
+      border-color: var(--success);
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    /* TABLAS ERP */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--gold);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge-stock {
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .stock-ok {
+      background: rgba(46, 204, 113, 0.15);
+      color: var(--success);
+    }
+
+    .stock-low {
+      background: rgba(231, 76, 60, 0.18);
+      color: var(--danger);
+    }
+
+    .btn-restock {
+      background: var(--bg-dark);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    /* LOG DE INTEGRACIÓN */
+    .log-box {
+      background: #080607;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--gold-soft);
+      max-height: 220px;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-badge">QB</div>
+      <div>
+        <h1><span>QORI</span> Beauty — ERP & CRM</h1>
+        <small>Sistema Centralizado • Trazabilidad Cochinilla CI 75470</small>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('crm', this)">1. Módulo CRM (Ventas & Clientes)</button>
+      <button class="tab-btn" onclick="switchTab('erp', this)">2. Módulo ERP (Inventario & Finanzas)</button>
+      <button class="tab-btn" onclick="switchTab('sync', this)">3. Bitácora Sincronizada</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- INDICADORES GENERALES EN TIEMPO REAL -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <span>Ventas Cerradas (ERP)</span>
+        <h2 id="kpiVentas">$38.00</h2>
+        <small>Sincronizado con CRM</small>
+      </div>
+      <div class="kpi-card">
+        <span>Fondo Comercio Justo (15%)</span>
+        <h2 id="kpiComunidad">$5.70</h2>
+        <small>Recolectores Andinos CI 75470</small>
+      </div>
+      <div class="kpi-card">
+        <span>Oportunidades Activas (CRM)</span>
+        <h2 id="kpiLeads">2</h2>
+        <small>En seguimiento comercial</small>
+      </div>
+      <div class="kpi-card">
+        <span>Stock Total Producto Terminado</span>
+        <h2 id="kpiStock">195 u.</h2>
+        <small>Almacén Central Quito</small>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PESTAÑA 1: MÓDULO CRM
+         ========================================== -->
+    <section id="crm" class="panel-section active">
+      <div class="grid-2">
+        <!-- Formulario nuevo prospecto -->
+        <div class="card">
+          <h3>+ Registrar Prospecto / Lead</h3>
+          <form id="leadForm">
+            <div class="form-group">
+              <label>Nombre de la Clienta</label>
+              <input type="text" id="clientName" placeholder="Ej. Valeria Mendoza" required />
+            </div>
+            <div class="form-group">
+              <label>Canal de Origen</label>
+              <select id="clientChannel">
+                <option value="Tienda Web">Tienda Virtual Web</option>
+                <option value="WhatsApp">WhatsApp Asistido</option>
+                <option value="Instagram">Instagram / TikTok</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Subtono de Piel (Perfil CRM)</label>
+              <select id="clientSubtone">
+                <option value="Subtono Cálido">Subtono Cálido (Dorado)</option>
+                <option value="Subtono Frío">Subtono Frío (Rosado)</option>
+                <option value="Subtono Neutro">Subtono Neutro (Equilibrado)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Producto de Interés</label>
+              <select id="clientProduct"></select>
+            </div>
+            <button type="submit" class="btn-primary">Agregar al Embudo CRM</button>
+          </form>
+        </div>
+
+        <!-- Embudo Kanban -->
+        <div class="card">
+          <h3>Embudo de Ventas (Pipeline CRM)</h3>
+          <div class="kanban-board">
+            <div class="kanban-col">
+              <h4>Nuevo Lead <span id="count-nuevo">0</span></h4>
+              <div id="col-nuevo"></div>
+            </div>
+            <div class="kanban-col">
+              <h4>Cotizado / Asesoría <span id="count-cotizado">0</span></h4>
+              <div id="col-cotizado"></div>
+            </div>
+            <div class="kanban-col">
+              <h4>Ganado (Pasa a ERP) <span id="count-ganado">0</span></h4>
+              <div id="col-ganado"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PESTAÑA 2: MÓDULO ERP
+         ========================================== -->
+    <section id="erp" class="panel-section">
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>Control de Inventario y Formulación CI 75470 (ERP)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Producto Cosmético</th>
+              <th>Categoría</th>
+              <th>Precio Unit.</th>
+              <th>Stock Disponible</th>
+              <th>Estado</th>
+              <th>Acción ERP</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTable"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Registro de Facturas y Órdenes Despachadas (ERP)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>N° Orden</th>
+              <th>Clienta</th>
+              <th>Producto</th>
+              <th>Total Facturado</th>
+              <th>85% QORI Beauty</th>
+              <th>15% Comunidad Andina</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PESTAÑA 3: BITÁCORA DE INTEGRACIÓN
+         ========================================== -->
+    <section id="sync" class="panel-section">
+      <div class="card">
+        <h3>Flujo de Datos en Tiempo Real (CRM ↔ ERP)</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+          Cada vez que cierras una venta en el <strong>CRM</strong>, el sistema descuenta automáticamente el inventario en el <strong>ERP</strong> y calcula la retención de comercio justo[cite: 4, 12].
+        </p>
+        <div class="log-box" id="systemLog">
+          [SISTEMA INICIADO] Base de datos QORI Beauty conectada.<br>
+          [ERP] Lote activo de materia prima: Cochinilla Andina Deshidratada CI 75470-01.<br>
+          [CRM -> ERP] Orden #QB-1001 (Sofía Andrade - Set Completo Ritual QORI) facturada y descontada de stock.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // 1. CATÁLOGO BASE EN ERP (Basado en QORI Beauty)
+    const products = [
+      { id: 'QB-01', name: 'Labial Hidratante Beso de Grana', category: 'Labios', price: 14.00, stock: 45 },
+      { id: 'QB-02', name: 'Tinta 2 en 1 Savia Roja', category: 'Rostro y Ojos', price: 15.00, stock: 38 },
+      { id: 'QB-03', name: 'Rubor en Crema Pétalo Andino', category: 'Rostro y Ojos', price: 16.00, stock: 32 },
+      { id: 'QB-04', name: 'Paleta Sombras Tierra y Carmín', category: 'Rostro y Ojos', price: 22.00, stock: 25 },
+      { id: 'QB-05', name: 'Bálsamo Néctar de Tuna', category: 'Labios', price: 9.50, stock: 40 },
+      { id: 'QB-06', name: 'Set Completo Ritual QORI', category: 'Kits', price: 38.00, stock: 15 }
+    ];
+
+    // 2. OPORTUNIDADES INICIALES EN CRM
+    let leads = [
+      { id: 1, client: 'María Fernanda Gómez', channel: 'WhatsApp', subtone: 'Subtono Cálido', productId: 'QB-06', stage: 'nuevo' },
+      { id: 2, client: 'Camila Torres', channel: 'Instagram', subtone: 'Subtono Frío', productId: 'QB-01', stage: 'cotizado' },
+      { id: 3, client: 'Sofía Andrade', channel: 'Tienda Web', subtone: 'Subtono Neutro', productId: 'QB-06', stage: 'ganado' }
+    ];
+
+    // 3. ÓRDENES FACTURADAS EN ERP
+    let orders = [
+      { code: 'QB-1001', client: 'Sofía Andrade', product: 'Set Completo Ritual QORI', total: 38.00 }
+    ];
+
+    // Llenar selector de productos en el formulario CRM
+    const productSelect = document.getElementById('clientProduct');
+    products.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = `${p.name} ($${p.price.toFixed(2)})`;
+      productSelect.appendChild(opt);
+    });
+
+    // Cambiar pestañas
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.panel-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // Registrar nuevo lead en CRM
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newLead = {
+        id: Date.now(),
+        client: document.getElementById('clientName').value,
+        channel: document.getElementById('clientChannel').value,
+        subtone: document.getElementById('clientSubtone').value,
+        productId: document.getElementById('clientProduct').value,
+        stage: 'nuevo'
+      };
+      leads.push(newLead);
+      addLog(`[CRM] Nuevo prospecto registrado: ${newLead.client} (${newLead.subtone}).`);
+      this.reset();
+      renderAll();
+    });
+
+    // Avanzar etapa en CRM y conectar con ERP si gana
+    function advanceLead(leadId, nextStage) {
+      const lead = leads.find(l => l.id === leadId);
+      if (!lead) return;
+
+      if (nextStage === 'ganado') {
+        const prod = products.find(p => p.id === lead.productId);
+        if (prod.stock <= 0) {
+          alert(`⚠️ Alerta ERP: No hay stock disponible de "${prod.name}". Reabastece en el módulo ERP primero.`);
+          return;
+        }
+        // Descuento automático en ERP
+        prod.stock -= 1;
+        const orderCode = `QB-${1000 + orders.length + 1}`;
+        orders.push({
+          code: orderCode,
+          client: lead.client,
+          product: prod.name,
+          total: prod.price
+        });
+        addLog(`[CRM -> ERP] Venta cerrada con ${lead.client}. Orden ${orderCode} generada. Stock de "${prod.name}" descontado (-1 u.).`);
+      } else {
+        addLog(`[CRM] ${lead.client} avanzó a etapa de Cotización / Asesoría.`);
+      }
+
+      lead.stage = nextStage;
+      renderAll();
+    }
+
+    // Reabastecer inventario en ERP
+    function restockProduct(prodId) {
+      const prod = products.find(p => p.id === prodId);
+      if (prod) {
+        prod.stock += 10;
+        addLog(`[ERP PRODUCCIÓN] Lote fabricado (+10 u.) para "${prod.name}" con pigmento CI 75470.`);
+        renderAll();
+      }
+    }
+
+    function addLog(text) {
+      const logBox = document.getElementById('systemLog');
+      const time = new Date().toLocaleTimeString();
+      logBox.innerHTML += `<br><span style="color:#888;">[${time}]</span> ${text}`;
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function renderAll() {
+      // Renderizar Kanban CRM
+      ['nuevo', 'cotizado', 'ganado'].forEach(stage => {
+        const col = document.getElementById(`col-${stage}`);
+        col.innerHTML = '';
+        const filtered = leads.filter(l => l.stage === stage);
+        document.getElementById(`count-${stage}`).textContent = filtered.length;
+
+        filtered.forEach(l => {
+          const prod = products.find(p => p.id === l.productId);
+          let buttons = '';
+          if (stage === 'nuevo') {
+            buttons = `
+              <button class="btn-mini" onclick="advanceLead(${l.id}, 'cotizado')">Cotizar</button>
+              <button class="btn-mini win" onclick="advanceLead(${l.id}, 'ganado')">✔ Cerrar Venta</button>
+            `;
+          } else if (stage === 'cotizado') {
+            buttons = `
+              <button class="btn-mini win" onclick="advanceLead(${l.id}, 'ganado')">✔ Marcar Ganado (ERP)</button>
+            `;
+          } else {
+            buttons = `<span style="font-size:0.75rem; color:var(--success);">✔ Facturado en ERP</span>`;
+          }
+
+          col.innerHTML += `
+            <div class="lead-card">
+              <strong>${l.client}</strong>
+              <div class="lead-meta">${prod.name} • <b>$${prod.price.toFixed(2)}</b> (${l.channel})</div>
+              <span class="tag-subtone">${l.subtone}</span>
+              <div class="lead-actions">${buttons}</div>
+            </div>
+          `;
+        });
+      });
+
+      // Renderizar Tabla Inventario ERP
+      const invTable = document.getElementById('inventoryTable');
+      invTable.innerHTML = '';
+      products.forEach(p => {
+        const isLow = p.stock <= 15;
+        invTable.innerHTML += `
+          <tr>
+            <td><code>${p.id}</code></td>
+            <td><strong>${p.name}</strong></td>
+            <td>${p.category}</td>
+            <td>$${p.price.toFixed(2)}</td>
+            <td><strong>${p.stock} u.</strong></td>
+            <td><span class="badge-stock ${isLow ? 'stock-low' : 'stock-ok'}">${isLow ? 'Stock Bajo' : 'Óptimo'}</span></td>
+            <td><button class="btn-restock" onclick="restockProduct('${p.id}')">+ Producir 10 u.</button></td>
+          </tr>
+        `;
+      });
+
+      // Renderizar Órdenes ERP
+      const ordTable = document.getElementById('ordersTable');
+      ordTable.innerHTML = '';
+      let totalSales = 0;
+      orders.forEach(o => {
+        totalSales += o.total;
+        ordTable.innerHTML += `
+          <tr>
+            <td><code>${o.code}</code></td>
+            <td>${o.client}</td>
+            <td>${o.product}</td>
+            <td><strong>$${o.total.toFixed(2)}</strong></td>
+            <td>$${(o.total * 0.85).toFixed(2)}</td>
+            <td style="color:var(--success);">$${(o.total * 0.15).toFixed(2)}</td>
+          </tr>
+        `;
+      });
+
+      // Actualizar KPIs
+      document.getElementById('kpiVentas').textContent = `$${totalSales.toFixed(2)}`;
+      document.getElementById('kpiComunidad').textContent = `$${(totalSales * 0.15).toFixed(2)}`;
+      document.getElementById('kpiLeads').textContent = leads.filter(l => l.stage !== 'ganado').length;
+      const totalStock = products.reduce((acc, p) => acc + p.stock, 0);
+      document.getElementById('kpiStock').textContent = `${totalStock} u.`;
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>

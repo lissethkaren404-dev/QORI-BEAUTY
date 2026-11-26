@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QORI Beauty | Cosmética Natural con Cochinilla de los Andes</title>
+  <meta name="description" content="Maquillaje y cuidado facial natural elaborado con carmín puro de cochinilla de los Andes. Color vibrante sin petroquímicos ni tóxicos." />
+  
+  <!-- Tipografías Google Fonts: Playfair Display (Elegancia/Herencia) + Plus Jakarta Sans (Clean Beauty) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES DE IDENTIDAD VISUAL (BRANDING QORI BEAUTY)
+       ========================================================================== */
+    :root {
+      --primary: #9E1B32;         /* Carmesí Andino / Rojo Cochinilla */
+      --primary-dark: #741123;    /* Carmesí Profundo */
+      --primary-light: #FCEEF0;   /* Rubor Suave */
+      --gold: #C59B27;            /* Dorado Qori ("Oro Rojo") */
+      --gold-light: #FBF6E8;      /* Crema Dorado */
+      --bg-cream: #FAF6F0;        /* Marfil Botánico */
+      --surface: #FFFFFF;         /* Blanco Puro */
+      --text-main: #222021;       /* Carbón Orgánico */
+      --text-muted: #5C5557;      /* Gris Cálido */
+      --whatsapp: #25D366;        /* Verde Oficial WhatsApp */
+      --whatsapp-dark: #1DA851;
+      --border-light: rgba(158, 27, 50, 0.12);
+      --shadow-sm: 0 4px 16px rgba(34, 32, 33, 0.05);
+      --shadow-md: 0 12px 32px rgba(158, 27, 50, 0.10);
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* ==========================================================================
+       2. RESET Y ESTILOS GENERALES
+       ========================================================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-padding {
+      padding: 90px 0;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary);
+      background-color: var(--primary-light);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 55px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ==========================================================================
+       3. BOTONES Y CALL TO ACTION (WHATSAPP)
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.96rem;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .btn-whatsapp {
+      background-color: var(--whatsapp);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.30);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(37, 211, 102, 0.40);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(158, 27, 50, 0.25);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      border: 1.5px solid rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-outline:hover {
+      background-color: #FFFFFF;
+      color: var(--primary);
+    }
+
+    /* ==========================================================================
+       4. HEADER & NAVEGACIÓN + LOGO SVG
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(250, 246, 240, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 14px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .brand-name span {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .brand-sub {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2.2px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta .btn {
+      padding: 10px 20px;
+      font-size: 0.88rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       5. SECCIÓN HERO (PORTADA DE ALTO IMPACTO)
+       ========================================================================== */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      background: 
+        linear-gradient(105deg, rgba(28, 12, 16, 0.88) 0%, rgba(116, 17, 35, 0.72) 55%, rgba(34, 32, 33, 0.45) 100%),
+        url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: #FFFFFF;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(197, 155, 39, 0.22);
+      border: 1px solid rgba(197, 155, 39, 0.6);
+      color: #F7DF94;
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      color: #F7DF94;
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 34px;
+      max-width: 600px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 45px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .metric-item strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #F7DF94;
+    }
+
+    .metric-item span {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    /* ==========================================================================
+       6. SOBRE NOSOTROS & ORIGEN DE LA COCHINILLA ANDINA
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      height: 490px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .origin-card {
+      position: absolute;
+      bottom: -24px;
+      right: -20px;
+      background: var(--surface);
+      padding: 20px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--gold);
+      max-width: 270px;
+    }
+
+    .origin-card h4 {
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .origin-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .about-text h2 {
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      margin-bottom: 18px;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .check-list {
+      list-style: none;
+      margin: 24px 0 30px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       7. PROPUESTA DE VALOR ROBUSTA (DIFERENCIACIÓN & PILARES)
+       ========================================================================== */
+    .value-prop-section {
+      background-color: var(--surface);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .vp-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 44px 48px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .vp-banner::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197, 155, 39, 0.35) 0%, transparent 70%);
+    }
+
+    .vp-banner-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #F7DF94;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .vp-banner blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+      line-height: 1.4;
+      font-style: italic;
+      max-width: 920px;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .pillar-card {
+      background: var(--bg-cream);
+      padding: 30px 26px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.22rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .pillar-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Tabla Comparativa Clean Beauty vs Convencional */
+    .comparison-box {
+      background: var(--bg-cream);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      border: 1px solid var(--border-light);
+    }
+
+    .comparison-box h3 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 15px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      font-size: 0.93rem;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    th:first-child { border-top-left-radius: 10px; }
+    th:last-child { border-top-right-radius: 10px; }
+
+    .badge-yes {
+      color: #166534;
+      background: #DCFCE7;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    .badge-no {
+      color: #991B1B;
+      background: #FEE2E2;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    /* ==========================================================================
+       8. CATÁLOGO DE PRODUCTOS Y SERVICIOS (LISTADO DE PRODUCTOS)
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 42px;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: 50px;
+      border: 1.5px solid var(--border-light);
+      background: var(--surface);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-img-box {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background: #F3ECE4;
+    }
+
+    .product-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img-box img {
+      transform: scale(1.06);
+    }
+
+    .product-category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .product-role-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--gold);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 50px;
+    }
+
+    .product-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      gap: 12px;
+    }
+
+    .product-price {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .product-price small {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .btn-card-wa {
+      padding: 10px 16px;
+      font-size: 0.84rem;
+      border-radius: 50px;
+    }
+
+    /* ==========================================================================
+       9. SECCIÓN DE CONTACTO Y CTA FINAL
+       ========================================================================== */
+    .cta-section {
+      background: linear-gradient(120deg, #222021 0%, #4A101B 100%);
+      color: #FFFFFF;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.08rem;
+      margin-bottom: 32px;
+    }
+
+    /* ==========================================================================
+       10. FOOTER Y BOTÓN FLOTANTE DE WHATSAPP
+       ========================================================================== */
+    footer {
+      background-color: #181617;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 50px 0 28px;
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand p {
+      margin-top: 14px;
+      max-width: 340px;
+      font-size: 0.88rem;
+    }
+
+    .footer-col h4 {
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-col a:hover {
+      color: #F7DF94;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 24px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Botón Flotante WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      z-index: 999;
+      background-color: var(--whatsapp);
+      color: #FFFFFF;
+      padding: 14px 22px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      background-color: var(--whatsapp-dark);
+      transform: scale(1.04);
+    }
+
+    /* ==========================================================================
+       11. DISEÑO RESPONSIVO (TABLETS Y MÓVILES)
+       ========================================================================== */
+    @media (max-width: 960px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .origin-card {
+        position: static;
+        margin-top: 16px;
+        max-width: 100%;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta {
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-cream);
+        padding: 24px;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-md);
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero-metrics {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .vp-banner {
+        padding: 30px 24px;
+      }
+      .whatsapp-float span {
+        display: none;
+      }
+      .whatsapp-float {
+        padding: 15px;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER & LOGOTIPO QORI BEAUTY
+       ======================================================================== -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#inicio" class="brand-logo" aria-label="QORI Beauty Inicio">
+        <!-- Logo SVG Llamativo: Gota de Carmín + Destello Dorado Andino -->
+        <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="30" fill="#9E1B32" stroke="#C59B27" stroke-width="2.5"/>
+          <path d="M32 13C32 13 46 27.5 46 37.5C46 45.232 39.732 51.5 32 51.5C24.268 51.5 18 45.232 18 37.5C18 27.5 32 13 32 13Z" fill="#FAF6F0"/>
+          <path d="M32 21C32 21 40 29.8 40 36C40 40.4183 36.4183 44 32 44C27.5817 44 24 40.4183 24 36C24 29.8 32 21 32 21Z" fill="#9E1B32"/>
+          <!-- Estrella Andina / Destello Qori -->
+          <path d="M32 27L33.6 31.4L38 33L33.6 34.6L32 39L30.4 34.6L26 33L30.4 31.4L32 27Z" fill="#C59B27"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">QORI <span>Beauty</span></span>
+          <span class="brand-sub">Oro Rojo de los Andes</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#nosotros">Nuestra Esencia</a></li>
+        <li><a href="#propuesta-valor">Propuesta de Valor</a></li>
+        <li><a href="#productos">Productos y Servicios</a></li>
+        <li><a href="#contacto">Asesoría</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="https://wa.me/5930999099902" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+          <!-- Icono WhatsApp SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+          Contáctanos por WhatsApp
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SECCIÓN HERO
+       ======================================================================== -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge">✦ Clean Beauty Ancestral • 100% Libre de Petroquímicos</span>
+        <h1>El tesoro rojo de los Andes <span>hecho belleza pura</span></h1>
+        <p>
+          En <strong>QORI Beauty</strong> transformamos el pigmento natural de la <strong>cochinilla de los Andes</strong> en maquillaje y cuidado facial de alta pigmentación. Color vibrante, hidratación botánica y trazabilidad ética para cuidar tu piel sin tóxicos.
+        </p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5930999099902" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+            Contáctanos por WhatsApp
+          </a>
+          <a href="#productos" class="btn btn-outline">Explorar Catálogo</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <strong>0% Petroquímicos</strong>
+            <span>Sin colorantes Red 6, Red 7 ni plomo</span>
+          </div>
+          <div class="metric-item">
+            <strong>CI 75470 Puro</strong>
+            <span>Ácido carmínico andino certificado</span>
+          </div>
+          <div class="metric-item">
+            <strong>Skincare + Color</strong>
+            <span>Enriquecido con mantecas botánicas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SOBRE LA EMPRESA & ORIGEN ANDINO
+       ======================================================================== -->
+  <section class="section-padding" id="nosotros">
+    <div class="container about-grid">
+      <div class="about-image-wrap">
+        <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=900&q=80" alt="Cosméticos naturales elaborados con cochinilla de los Andes">
+        <div class="origin-card">
+          <h4>¿Por qué "QORI Beauty"?</h4>
+          <p><em>Qori</em> significa <strong>"Oro" o "Tesoro"</strong> en quechua/kichwa, honrando al histórico "oro rojo" extraído de las pencas de tuna en los Andes.</p>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-tag">Sobre Nosotros</span>
+        <h2>Sabiduría ancestral andina unida a la dermatología botánica moderna</h2>
+        <p>
+          La mayoría de los cosméticos convencionales utilizan colorantes sintéticos derivados del petróleo que resecan, irritan o pigmentan negativamente zonas delicadas como los labios y los párpados. Por otro lado, muchos productos caseros pierden color en pocos minutos.
+        </p>
+        <p>
+          En <strong>QORI Beauty</strong> resolvemos ambos problemas utilizando <strong>cochinilla de los Andes (<em>Dactylopius coccus</em>)</strong> recolectada de forma agroecológica y sostenible, logrando tonos carmesí, rosados y tierra de altísima fijación y total inocuidad dermatológica.
+        </p>
+
+        <ul class="check-list">
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>Aprobado para labios y contorno de ojos:</strong> Pigmento seguro reconocido por normativas internacionales (FDA y UE).</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>Cultivo sostenible sin pesticidas:</strong> Cosechado en pencas de tuna (<em>Opuntia ficus-indica</em>) apoyando a familias agricultoras andinas.</span>
+          </li>
+          <li>
+            <span class="check-icon">✓</span>
+            <span><strong>Nutrición activa:</strong> Fórmulas enriquecidas con manteca de cacao, aceite de aguacate y extractos vegetales hidratantes.</span>
+          </li>
+        </ul>
+
+        <a href="https://wa.me/5930999099902" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Solicitar Asesoría de Tonos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PROPUESTA DE VALOR ROBUSTA & PILARES ESTRATÉGICOS
+       ======================================================================== -->
+  <section class="section-padding value-prop-section" id="propuesta-valor">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestra Propuesta de Valor</span>
+        <h2>¿Por qué elegir cosméticos con Cochinilla de los Andes?</h2>
+        <p>Combinamos la intensidad cromática del maquillaje profesional con la pureza de la cosmética limpia (Clean Beauty) y trazabilidad directa de origen.</p>
+      </div>
+
+      <!-- Declaración Central de Propuesta de Valor -->
+      <div class="vp-banner">
+        <span class="vp-banner-label">Propuesta de Valor QORI Beauty</span>
+        <blockquote>
+          “Maquillaje natural de alta pigmentación y larga duración formulado con carmín puro de cochinilla de los Andes y mantecas botánicas hidratantes: color vibrante que nutre y protege tu piel sin derivados tóxicos del petróleo, con trazabilidad ética desde su origen andino.”
+        </blockquote>
+      </div>
+
+      <!-- 4 Pilares de Valor -->
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">🌿</div>
+          <h3>1. Seguridad Dermatológica</h3>
+          <p>Fórmulas hipoalergénicas libres de metales pesados, parabenos y colorantes azoicos sintéticos. Ideales para pieles sensibles y uso diario.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🎨</div>
+          <h3>2. Pigmentación Superior</h3>
+          <p>A diferencia de tintes vegetales débiles (como remolacha), el ácido carmínico ofrece alta resistencia térmica, lumínica y tonos intensos.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">🏔️</div>
+          <h3>3. Trazabilidad y Comercio Justo</h3>
+          <p>Abastecimiento directo con comunidades recolectoras andinas sin deforestación ni consumo intensivo de agua, impulsando el desarrollo local.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon">💧</div>
+          <h3>4. Fórmulas Híbridas (Skincare)</h3>
+          <p>Cada producto maquilla mientras repara la barrera cutánea gracias a aceites prensados en frío, evitando labios agrietados o resequedad.</p>
+        </div>
+      </div>
+
+      <!-- Tabla Comparativa -->
+      <div class="comparison-box">
+        <h3>QORI Beauty frente al Maquillaje Convencional y Casero</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Atributo de Calidad</th>
+                <th>QORI Beauty (Cochinilla Andina)</th>
+                <th>Maquillaje Industrial</th>
+                <th>Cosmética Casera Común</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Origen del Pigmento</strong></td>
+                <td><span class="badge-yes">100% Natural (Ácido Carmínico)</span></td>
+                <td><span class="badge-no">Derivados del petróleo (Red 6/7/40)</span></td>
+                <td>Extractos vegetales inestables</td>
+              </tr>
+              <tr>
+                <td><strong>Intensidad y Duración</strong></td>
+                <td><span class="badge-yes">Alta fijación y brillo natural</span></td>
+                <td>Alta, pero con químicos agresivos</td>
+                <td><span class="badge-no">Baja; se oxida o desvanece rápido</span></td>
+              </tr>
+              <tr>
+                <td><strong>Seguridad en Labios y Ojos</strong></td>
+                <td><span class="badge-yes">Aprobado e hipoalergénico</span></td>
+                <td><span class="badge-no">Riesgo de alergias y resequedad</span></td>
+                <td>Sin control microbiológico</td>
+              </tr>
+              <tr>
+                <td><strong>Impacto Ambiental y Social</strong></td>
+                <td><span class="badge-yes">Biodegradable y comercio justo</span></td>
+                <td><span class="badge-no">Contaminación petroquímica</span></td>
+                <td>Variable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       CATÁLOGO DE PRODUCTOS Y SERVICIOS (LISTADO DE PRODUCTOS)
+       ======================================================================== -->
+  <section class="section-padding" id="productos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Catálogo Oficial</span>
+        <h2>Nuestros Productos y Líneas de Cuidado</h2>
+        <p>Selecciona una categoría para explorar nuestra línea elaborada con pigmento puro de cochinilla andina y consulta disponibilidad inmediata por WhatsApp.</p>
+      </div>
+
+      <!-- Botones de Filtro por Categoría -->
+      <div class="filter-bar" role="tablist" aria-label="Filtrar productos por categoría">
+        <button class="filter-btn active" data-filter="todos">Todos (7)</button>
+        <button class="filter-btn" data-filter="Labios">Labios</button>
+        <button class="filter-btn" data-filter="Rostro y Ojos">Rostro y Ojos</button>
+        <button class="filter-btn" data-filter="Cuidado">Cuidado</button>
+        <button class="filter-btn" data-filter="Kits">Kits</button>
+      </div>
+
+      <!-- Contenedor Dinámico de Tarjetas de Producto -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Se renderiza desde JavaScript con los datos exactos del archivo adjunto -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       LLAMADO A LA ACCIÓN (WHATSAPP DIRECTO)
+       ======================================================================== -->
+  <section class="section-padding cta-section" id="contacto">
+    <div class="container cta-box">
+      <span class="hero-badge">Atención Personalizada</span>
+      <h2>¿Lista para descubrir el tono ideal para tu piel?</h2>
+      <p>
+        Escríbenos directamente por WhatsApp para recibir asesoría personalizada según tu subtono de piel, consultar envíos o solicitar pedidos para tu rutina diaria.
+      </p>
+      <a href="https://wa.me/5930999099902" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+        Contáctanos por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" fill="#9E1B32" stroke="#C59B27" stroke-width="2.5"/>
+              <path d="M32 13C32 13 46 27.5 46 37.5C46 45.232 39.732 51.5 32 51.5C24.268 51.5 18 45.232 18 37.5C18 27.5 32 13 32 13Z" fill="#FAF6F0"/>
+              <path d="M32 21C32 21 40 29.8 40 36C40 40.4183 36.4183 44 32 44C27.5817 44 24 40.4183 24 36C24 29.8 32 21 32 21Z" fill="#9E1B32"/>
+            </svg>
+            <div class="brand-text">
+              <span class="brand-name" style="color: #FFFFFF;">QORI <span>Beauty</span></span>
+            </div>
+          </div>
+          <p>Cosmética natural y consciente elaborada con ácido carmínico puro de cochinilla de los Andes. Belleza limpia con identidad andina.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nuestra Esencia</a></li>
+            <li><a href="#propuesta-valor">Propuesta de Valor</a></li>
+            <li><a href="#productos">Catálogo de Productos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto Directo</h4>
+          <ul>
+            <li>WhatsApp: +593 099 909 9902</li>
+            <li>Región Andina • Ecuador</li>
+            <li><a href="https://wa.me/5930999099902" target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 600;">→ Abrir chat en WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2026 QORI Beauty. Todos los derechos reservados. Cosmética Natural con Cochinilla de los Andes.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón Flotante Permanente de WhatsApp -->
+  <a href="https://wa.me/5930999099902" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contáctanos por WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+    <span>Contáctanos por WhatsApp</span>
+  </a>
+
+  <!-- ========================================================================
+       JAVASCRIPT PURO (CATÁLOGO DINÁMICO, FILTROS Y MENÚ MÓVIL)
+       ======================================================================== -->
+  <script>
+    // Datos exactos provenientes del archivo "LISTADO DE PRODUCTOSS"
+    const productosQori = [
+      {
+        categoria: "Labios",
+        nombre: "Labial Hidratante Beso de Grana",
+        precio: "$14.00",
+        destacado: "Producto Estrella",
+        descripcion: "Labial en barra de acabado satinado y alta pigmentación, formulado con ácido carmínico puro de cochinilla andina, manteca de cacao y aceite de aguacate. Nutre intensamente sin resecar.",
+        imagen: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        categoria: "Labios",
+        nombre: "Bálsamo Néctar de Tuna",
+        precio: "$9.50",
+        destacado: "Hidratación Diaria",
+        descripcion: "Bálsamo labial reparador con un sutil toque rosado natural derivado de la cochinilla y extracto de tuna andina. Protege los labios agrietados frente al frío y la resequedad.",
+        imagen: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        categoria: "Rostro y Ojos",
+        nombre: "Tinta 2 en 1 Savia Roja",
+        precio: "$15.00",
+        destacado: "Multifunción",
+        descripcion: "Tinta líquida botánica de larga duración para aplicar tanto en labios como en mejillas. Brinda un rubor natural efecto 'buena cara' resistente al agua y libre de petroquímicos.",
+        imagen: "https://images.unsplash.com/photo-1631730486784-5456119f69ae?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        categoria: "Rostro y Ojos",
+        nombre: "Rubor en Crema Pétalo Andino",
+        precio: "$16.00",
+        destacado: "Clean Beauty",
+        descripcion: "Blush cremoso fundente, hipoalergénico y fácil de difuminar con las yemas de los dedos. Aporta luminosidad saludable y pigmento natural sin obstruir los poros.",
+        imagen: "https://images.unsplash.com/photo-1599733589046-10c005739ef9?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        categoria: "Rostro y Ojos",
+        nombre: "Paleta de Sombras Tierra y Carmín",
+        precio: "$22.00",
+        destacado: "Aprobado Ojos",
+        descripcion: "Cuarteto de sombras minerales compactas en tonos tierra, rosados y burdeos. Elaborado con carmín puro de cochinilla, certificado y seguro para el área delicada de los párpados.",
+        imagen: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        categoria: "Cuidado",
+        nombre: "Jabón Facial Espuma de Grana",
+        precio: "$8.00",
+        destacado: "Piel Sensible",
+        descripcion: "Jabón artesanal suave de glicerina vegetal, avena coloidal y antioxidantes naturales de cochinilla. Limpia profundamente el rostro respetando el pH natural de la piel.",
+        imagen: "https://images.unsplash.com/photo-1600857062241-98e5dba7f214?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        categoria: "Kits",
+        nombre: "Set Completo Ritual QORI",
+        precio: "$38.00",
+        destacado: "Pack Ahorro",
+        descripcion: "Experiencia completa de maquillaje botánico andino: incluye Labial Beso de Grana, Rubor en Crema Pétalo Andino, Tinta 2 en 1 Savia Roja y cosmetiquera artesanal.",
+        imagen: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    const productsGrid = document.getElementById("productsGrid");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const whatsappURL = "https://wa.me/5930999099902";
+
+    // Función para renderizar las tarjetas de productos
+    function renderProductos(categoriaSeleccionada = "todos") {
+      productsGrid.innerHTML = "";
+
+      const filtrados = categoriaSeleccionada === "todos"
+        ? productosQori
+        : productosQori.filter(prod => prod.categoria === categoriaSeleccionada);
+
+      filtrados.forEach(producto => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-img-box">
+            <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+            <span class="product-category-badge">${producto.categoria}</span>
+            <span class="product-role-badge">${producto.destacado}</span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">${producto.nombre}</h3>
+            <p class="product-desc">${producto.descripcion}</p>
+            <div class="product-footer">
+              <div class="product-price">
+                ${producto.precio} <small>USD</small>
+              </div>
+              <a href="${whatsappURL}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-card-wa">
+                Contáctanos por WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+        productsGrid.appendChild(card);
+      });
+    }
+
+    // Eventos para los botones de filtro
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        renderProductos(btn.getAttribute("data-filter"));
+      });
+    });
+
+    // Menú desplegable en dispositivos móviles
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Carga inicial del catálogo completo
+    renderProductos();
+  </script>
+</body>
+</html>
